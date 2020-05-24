@@ -1,13 +1,12 @@
 <?php
-class ControllerCatalogReview extends Controller {
-	private $error = array();
-
+class ModelCatalogNew extends Model
+{
     public function add()
     {
         
     }
 
-    public function update()
+    public function edit()
     {
         
     }
