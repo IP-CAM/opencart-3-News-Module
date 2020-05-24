@@ -2,7 +2,7 @@
 class ModelCatalogNew extends Model
 {
     public function addNew($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "new SET author = '" . $this->db->escape($data['author']) . "', new_id = '" . (int)$data['new_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "new SET new_id = '" . (int)$data['new_id'] . "', title = '" . $this->db->escape(strip_tags($data['title'])) . "', news = '" . (int)$data['news'] . "', author = '" . (int)$data['author'] . "', date = '" . $this->db->escape($data['date']) . "'");
 
         $new_id = $this->db->getLastId();
 
@@ -11,13 +11,15 @@ class ModelCatalogNew extends Model
 		return $new_id;
 	}
 
-    public function edit()
-    {
-        
-    }
+    public function editNew($new_id, $data) {
+		$this->db->query("UPDATE " . DB_PREFIX . "', new_id = '" . (int)$data['new_id'] . "', title = '" . $this->db->escape(strip_tags($data['title'])) . "', news = '" . (int)$data['news'] . "', author = '" . (int)$data['author'] . "', date = '" . $this->db->escape($data['date']) . "' WHERE new_id = '" . (int)$new_id . "'");
 
-    public function delete()
-    {
-        
-    }
+		$this->cache->delete('new');
+	}
+
+	public function deleteNew($new_id) {
+		$this->db->query("DELETE FROM " . DB_PREFIX . "new WHERE new_id = '" . (int)$new_id . "'");
+
+		$this->cache->delete('new');
+	}
 }
