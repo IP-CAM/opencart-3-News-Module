@@ -9,7 +9,7 @@
 
 DROP TABLE IF EXISTS `oc_new`;
 CREATE TABLE `oc_new` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_new` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `news` varchar(100) NOT NULL,
   `author` varchar(100) DEFAULT NULL,
