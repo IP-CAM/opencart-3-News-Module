@@ -21,5 +21,14 @@ class ModelCatalogNew extends Model
 		$this->db->query("DELETE FROM " . DB_PREFIX . "new WHERE new_id = '" . (int)$new_id . "'");
 
 		$this->cache->delete('new');
-	}
+    }
+    
+    public function getNews()
+    {
+		$sql = "SELECT * FROM " . DB_PREFIX . "new";
+        
+        $query = $this->db->query($sql);
+
+		return $query->rows;
+    }
 }
