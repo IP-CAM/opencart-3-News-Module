@@ -7,8 +7,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP TABLE IF EXISTS `oc_new`;
-CREATE TABLE `oc_new` (
+DROP TABLE IF EXISTS `ocy6_news`;
+CREATE TABLE `oc_news` (
   `id_new` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `news` varchar(100) NOT NULL,
