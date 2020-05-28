@@ -33,9 +33,9 @@ class ControllerInformationNews extends Controller
             );
         }
 
-        $this->document->setTitle($this->language->get('text_title'));
+        $this->document->setTitle($this->language->get('heading_title'));
 
-        $data['heading_title'] = $this->language->get('text_title');
+        $data['heading_title'] = $this->language->get('heading_title');
         $data['title'] = $this->language->get('text_title');
         $data['text_description'] = $this->language->get('text_title');
         $data['text_view'] = $this->language->get('text_view');
@@ -58,14 +58,10 @@ class ControllerInformationNews extends Controller
         if (isset($this->request->get['id_new']) && !empty($this->request->get['id_new'])) {
             $id_new = $this->request->get['id_new'];
         } else {
-            //error
+            $id_new = 0;
         }
 
         $news = $this->model_catalog_news->getNews($id_new);
-
-        // print_r($news);
-
-        var_dump($news);
 
         $data['breadcrumbs'] = array();
 
