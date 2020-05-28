@@ -1,5 +1,5 @@
 <?php
-class ModelNewsNews extends Model
+class ModelCatalogNews extends Model
 {
     public function getNews($id_news)
     {

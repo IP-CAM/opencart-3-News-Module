@@ -1,5 +1,5 @@
 <?php
-class ControllerNewsNews extends Controller
+class ControllerInformationNews extends Controller
 {
 
     public function index()
@@ -39,13 +39,13 @@ class ControllerNewsNews extends Controller
             );
         }
 
-        $this->document->SetTitle($this->language->get('text_title'));
+        $this->document->SetTitle($this->language->get('title'));
 
-        $data['heading_title'] = $this->language->get('text_title');
-        $data['title'] = $this->language->get('text_title');
-        $data['text_news'] = $this->language->get('text_news');
-        $data['text_author'] = $this->language->get('text_author');
-        $data['text_view'] = $this->language->get('view');
+        $data['heading_title'] = $this->language->get('title');
+        $data['title'] = $this->language->get('title');
+        $data['news'] = $this->language->get('news');
+        $data['author'] = $this->language->get('author');
+        $data['view'] = $this->language->get('view');
 
 
         $data['column_left'] = $this->load->controller('common/column_left');
@@ -124,6 +124,6 @@ class ControllerNewsNews extends Controller
         $data['header'] = $this->load->controller('common/header');
 
 
-        $this->response->setOutput($this->load->view('news/news', $data));
+        $this->response->setOutput($this->load->view('information/news', $data));
     }
 }
