@@ -105,14 +105,14 @@ class ControllerInformationNews extends Controller
                 'text' => $news['title'],
                 'href' => $this->url->link('information/news/news', 'id_new' . $news['id_new'])
             );
-            $data['news'] = array(
+            $data['news_single'] = array(
                 'title' => $news['title'],
                 'news' => $news['news'],
                 'author' => $news['author']
             );
         }
 
-        var_dump($data['news']);
+        var_dump($data['news_single']);
 
         $this->document->SetTitle($news['title']);
 
@@ -131,6 +131,6 @@ class ControllerInformationNews extends Controller
         $data['header'] = $this->load->controller('common/header');
 
 
-        $this->response->setOutput($this->load->view('information/news', $data));
+        $this->response->setOutput($this->load->view('information/news_single', $data));
     }
 }
