@@ -35,7 +35,6 @@ class ControllerInformationNews extends Controller
                 'news' => $news['news'],
                 'author' => $news['author'],
                 'view' => $this->url->link('information/news/news', 'id_new=' . $news['id_new'])
-
             );
         }
 
@@ -45,7 +44,7 @@ class ControllerInformationNews extends Controller
         $data['title'] = $this->language->get('title');
         $data['news'] = $this->language->get('news');
         $data['author'] = $this->language->get('author');
-        $data['view'] = $this->language->get('view');
+        $data['text_view'] = $this->language->get('view');
 
 
         $data['column_left'] = $this->load->controller('common/column_left');
@@ -80,11 +79,12 @@ class ControllerInformationNews extends Controller
             // $id_new = 0;
         }
 
-        $news = $this->model_catalog_news->getNews($id_new);
 
         // print_r($news);
 
+        $news = $this->model_catalog_news->getNews($id_new);
 
+        
 
 
         //creer un array ds un array
@@ -105,15 +105,22 @@ class ControllerInformationNews extends Controller
                 'text' => $news['title'],
                 'href' => $this->url->link('information/news/news', 'id_new' . $news['id_new'])
             );
+            $data['news'] = array(
+                'title' => $news['title'],
+                'news' => $news['news'],
+                'author' => $news['author']
+            );
         }
+
+        var_dump($data['news']);
 
         $this->document->SetTitle($news['title']);
 
-        $data['heading_title'] = $news['title'];
-        $data['title'] = $news['title'];
-        $data['text_news'] = $news['news'];
-        $data['text_author'] = $news['author'];
-        $data['text_view'] = $news['date'];
+        $data['heading_title'] = $this->language->get('title');
+        $data['title'] = $this->language->get('title');
+        $data['news'] = $this->language->get('news');
+        $data['author'] = $this->language->get('author');
+        $data['text_view'] = $this->language->get('view');
 
 
         $data['column_left'] = $this->load->controller('common/column_left');
