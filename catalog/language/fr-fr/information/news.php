@@ -1,8 +1,10 @@
 <?php
 // Heading
-$_['heading_title'] = 'News management';
+$_['heading_title'] = 'Gestion des nouvelles';
 
-$_['headingtitle'] = 'News management';
-$_['texttitle'] = 'Dernierres Nouvelle';
-$_['textdescription'] = 'vous trouverez les derniers article ici';
-$_['heading_view'] = 'vue';
+$_['news'] = 'Nouvelle';
+$_['text_title'] = 'Titre';
+$_['text_description'] = 'Description';
+$_['text_view'] = 'Voir';
+$_['error'] = 'Erreur !!!!!!!!!!!!!!!!!!!!!!!!!!!';
+$_['separator'] = '&gt;';
