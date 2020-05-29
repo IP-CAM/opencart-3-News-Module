@@ -1,3 +1,5 @@
+USE opencart_tp1;
+
 DROP TABLE IF EXISTS `ocy6_news`;
 CREATE TABLE `ocy6_news` (
   `id_new` bigint(20) NOT NULL AUTO_INCREMENT,
