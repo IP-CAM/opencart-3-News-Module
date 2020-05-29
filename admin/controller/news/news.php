@@ -52,7 +52,7 @@ class ControllerNewsNews extends Controller {
         $data['footer'] = $this->load->controller('common/footer');
         $data['header'] = $this->load->controller('common/header');
 
-        $this->response->setOutput($this->load->view('news/news_create', $data));
+        $this->response->setOutput($this->load->view('news/news_list', $data));
     }
 
     public function create()
@@ -73,15 +73,14 @@ class ControllerNewsNews extends Controller {
             'href' => $this->url->link('common/dashboard&user_token='.$this->session->data['user_token'])
         );
 
-            $data['news'] = array();
-            $data['news'][] = array(
-                'title' => $this->request->get('title'),
-                'author' => $this->request->get('author'),
-                'description' => $this->request->get('description')
-            );
+        $data['news'] = array();
+        $data['news'][] = array(
+            'title' => $this->request->get('title'),
+            'author' => $this->request->get('author'),
+            'description' => $this->request->get('description')
+        );
 
-        $data['addNews'] = $this->model_catalog_news->addNews($data['news']);
-
+        $data['AddNews'] = $this->url->link('news/news_store&user_token='.$this->session->data['user_token']);
 
         $this->document->setTitle($this->language->get('heading_title'));
 
@@ -103,7 +102,7 @@ class ControllerNewsNews extends Controller {
 
     public function store($data)
     {
-        # code...
+        $this->model_catalog_news->addNews($data);
     }
 
     public function update()
