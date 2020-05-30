@@ -2,7 +2,7 @@
 class ModelCatalogNews extends Model
 {
     public function addNew($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "news SET id_new = '" . (int)$data['id_new'] . "', title = '" . $this->db->escape(strip_tags($data['title'])) . "', news = '" . (int)$data['news'] . "', author = '" . (int)$data['author'] . "', date = '" . $this->db->escape($data['date']) . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "news SET id_new = '" . (int)$data['id_new'] . "', title = '" . $this->db->escape(strip_tags($data['title'])) . "', news = '" . $data['news'] . "', author = '" . $data['author'] . "'");
 
         $id_new = $this->db->getLastId();
 
@@ -12,7 +12,7 @@ class ModelCatalogNews extends Model
 	}
 
     public function editNew($id_new, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "news SET id_new = '" . (int)$data['id_new'] . "', title = '" . $this->db->escape(strip_tags($data['title'])) . "', news = '" . (int)$data['news'] . "', author = '" . (int)$data['author'] . "', date = '" . $this->db->escape($data['date']) . "' WHERE id_new = '" . (int)$id_new . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "news SET id_new = '" . (int)$data['id_new'] . "', title = '" . $this->db->escape(strip_tags($data['title'])) . "', news = '" . $data['news'] . "', author = '" . $data['author'] . "', date = '"  . "'");
 
 		$this->cache->delete('news');
 	}

@@ -107,10 +107,9 @@ class ControllerNewsNews extends Controller {
 
         $this->response->setOutput($this->load->view('news/news_create', $data));
 
-        if (isset($_POST['confirmation'])) {
-            if ($_POST['confirmation'] === "oui"){
-                $news = $this->model_catalog_news->deleteNew($id_new);
-               }
+        if (isset($_POST['submit'])) {
+            // var_dump($_POST);
+            $this->model_catalog_news->addNew($_POST);
             $this->response->redirect($this->url->link('news/news', 'user_token=' . $this->session->data['user_token'])); 
         }
     }
@@ -174,5 +173,12 @@ class ControllerNewsNews extends Controller {
 
 
         $this->response->setOutput($this->load->view('news/news_delete', $data));
+
+        if (isset($_POST['confirmation'])) {
+            if ($_POST['confirmation'] === "oui"){
+                $news = $this->model_catalog_news->deleteNew($id_new);
+               }
+            $this->response->redirect($this->url->link('news/news', 'user_token=' . $this->session->data['user_token'])); 
+        }
     }
 }
