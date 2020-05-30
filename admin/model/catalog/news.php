@@ -12,7 +12,7 @@ class ModelCatalogNews extends Model
 	}
 
     public function editNew($id_new, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "news SET id_new = '" . (int)$data['id_new'] . "', title = '" . $this->db->escape(strip_tags($data['title'])) . "', news = '" . $data['news'] . "', author = '" . $data['author'] . "', date = '"  . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "news SET title = '" . $this->db->escape(strip_tags($data['title'])) . "', news = '" . $data['news'] . "', author = '" . $data['author'] . "' WHERE id_new = '" . $id_new . "'");
 
 		$this->cache->delete('news');
 	}

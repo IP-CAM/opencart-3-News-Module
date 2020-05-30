@@ -74,19 +74,11 @@ class ControllerNewsNews extends Controller {
         );
 
 
-            $data['breadcrumbs'][] = array(
-                'text' =>$this->language->get('text_create'),
-                'href' => $this->url->link('news/news/create&user_token='.$this->session->data['user_token'])
-            );
+        $data['breadcrumbs'][] = array(
+            'text' =>$this->language->get('text_create'),
+            'href' => $this->url->link('news/news/create&user_token='.$this->session->data['user_token'])
+        );
 
-        // $data['news'] = array();
-        // $data['news'][] = array(
-        //     'title' => $this->request->get('title'),
-        //     'author' => $this->request->get('author'),
-        //     'description' => $this->request->get('description')
-        // );
-
-        $data['addNews'] = $this->url->link('news/news/store&user_token='.$this->session->data['user_token']);
         $data['news_list'] = $this->url->link('news/news&user_token='.$this->session->data['user_token']);
 
         $this->document->setTitle($this->language->get('heading_title'));
@@ -116,7 +108,56 @@ class ControllerNewsNews extends Controller {
 
     public function update()
     {
-        
+        $this->session->data['user_token'];
+        $this->language->load('news/news');
+        $this->load->model('catalog/news');
+
+        if (isset($this->request->get['id_new']) && !empty($this->request->get['id_new'])) {
+            $id_new = $this->request->get['id_new'];
+        } else {
+            // $id_new = 0;
+        }
+
+        $data['breadcrumbs'] = array();
+
+        $data['breadcrumbs'][] = array(
+            'text' => $this->language->get('text_home'),
+            'href' => $this->url->link('common/dashboard&user_token='.$this->session->data['user_token'])
+        );
+
+        $data['breadcrumbs'][] = array(
+            'text' => $this->language->get('heading_title'),
+            'href' => $this->url->link('news/news&user_token='.$this->session->data['user_token'])
+        );
+
+        $news = $this->model_catalog_news->getNew($id_new);
+        if ($news) {
+            $data['breadcrumbs'][] = array(
+                'text' => $news['title'],
+                'href' => $this->url->link('news/news/delete&user_token='.$this->session->data['user_token'])
+            );
+        }
+
+        $data['news'] = array(
+            'title' => $news['title'],
+            'news' => $news['news'],
+            'author' => $news['author'],
+            );
+    
+        $data['column_left'] = $this->load->controller('common/column_left');
+        $data['column_right'] = $this->load->controller('common/column_right');
+        $data['content_top'] = $this->load->controller('common/content_top');
+        $data['content_bottom'] = $this->load->controller('common/content_bottom');
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['header'] = $this->load->controller('common/header');
+            
+        $this->response->setOutput($this->load->view('news/news_update', $data));
+
+        if (isset($_POST['submit'])) {
+            // var_dump($_POST);
+            $this->model_catalog_news->editNew($news['id_new'] , $_POST);
+            $this->response->redirect($this->url->link('news/news', 'user_token=' . $this->session->data['user_token'])); 
+        }
     }
     
     /**
