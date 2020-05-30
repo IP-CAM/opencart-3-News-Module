@@ -30,5 +30,18 @@ class ModelCatalogNews extends Model
         $query = $this->db->query($sql);
 
 		return $query->rows;
+	}
+	
+	public function getNew($id_news)
+    {
+        //EXECUTER REQUETE ->  DB_PREFIX option d'opencart il sera oc_
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "news WHERE id_new = '" . $id_news . "'");
+
+        //verifie tous les id si corespon donne l'id en question.
+        if ($query->num_rows) {
+            return $query->row;
+        } else {
+            return false;
+        }
     }
 }

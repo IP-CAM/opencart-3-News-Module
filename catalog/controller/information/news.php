@@ -86,7 +86,7 @@ class ControllerInformationNews extends Controller
 
         $data['heading_title'] = $news['title'];
         $data['title'] = $news['title'];
-        $data['description'] = $news['description'];
+        $data['description'] = $news['news'];
         $data['date'] = $news['date_added'];
 
 

@@ -70,8 +70,14 @@ class ControllerNewsNews extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('common/dashboard&user_token='.$this->session->data['user_token'])
+            'href' => $this->url->link('news/news&user_token='.$this->session->data['user_token'])
         );
+
+
+            $data['breadcrumbs'][] = array(
+                'text' =>$this->language->get('text_create'),
+                'href' => $this->url->link('news/news/create&user_token='.$this->session->data['user_token'])
+            );
 
         // $data['news'] = array();
         // $data['news'][] = array(
@@ -100,24 +106,25 @@ class ControllerNewsNews extends Controller {
         $data['header'] = $this->load->controller('common/header');
 
         $this->response->setOutput($this->load->view('news/news_create', $data));
-    }
 
-    public function store($data)
-    {
-        $this->session->data['user_token'];
-        $this->language->load('news/news');
-        $this->load->model('catalog/news');
-
-        $this->response->setOutput($this->load->view('news/news_delete', $data));
-
-        // $this->model_catalog_news->addNew($data);
+        if (isset($_POST['confirmation'])) {
+            if ($_POST['confirmation'] === "oui"){
+                $news = $this->model_catalog_news->deleteNew($id_new);
+               }
+            $this->response->redirect($this->url->link('news/news', 'user_token=' . $this->session->data['user_token'])); 
+        }
     }
 
     public function update()
     {
         
     }
-
+    
+    /**
+     * delete
+     *
+     * @return void
+     */
     public function delete()
     {
         $this->session->data['user_token'];
@@ -131,26 +138,41 @@ class ControllerNewsNews extends Controller {
             $id_new = 0;
         }
 
-        $news = $this->model_catalog_news->deleteNew($id_new);
 
         $data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/home')
+            'href' => $this->url->link('common/dashboard&user_token='.$this->session->data['user_token'])
         );
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('information/news')
+            'href' => $this->url->link('news/news&user_token='.$this->session->data['user_token'])
         );
 
+        $news = $this->model_catalog_news->getNew($id_new);
         if ($news) {
             $data['breadcrumbs'][] = array(
                 'text' => $news['title'],
-                'href' => $this->url->link('information/news/news', 'id_new=' . $news['id_new'])
+                'href' => $this->url->link('news/news/delete&user_token='.$this->session->data['user_token'])
             );
         }
+      
+        $data['news'] = array(
+        'title' => $news['title'],
+        'news' => $news['news'],
+        'author' => $news['author'],
+        );
+
+        $data['column_left'] = $this->load->controller('common/column_left');
+        $data['column_right'] = $this->load->controller('common/column_right');
+        $data['content_top'] = $this->load->controller('common/content_top');
+        $data['content_bottom'] = $this->load->controller('common/content_bottom');
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['header'] = $this->load->controller('common/header');
+
+
         $this->response->setOutput($this->load->view('news/news_delete', $data));
     }
 }
