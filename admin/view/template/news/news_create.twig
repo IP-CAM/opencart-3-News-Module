@@ -20,10 +20,15 @@
     <div id="content" class="{{ class }}">{{ content_top }}
      <!-- ligne 23 et 231  ne sont pas par default -->
       <h1>{{ heading_title }}</h1>
-      <a href="{{news.news_list}}" class = "btn btn-primary">{{ text_news_list }}</a>
-    <form action="{{ addNews }}" methode="POST">
-
+      <a href="{{news_list}}" class = "btn btn-primary">{{ text_news_list }}</a>
+{# {{ addNews }} #}
+    <form action="index.php?route=news/news/store&user_token=RMx1lz67u3bZjthlD5dlpWUncm9egwhi" methode="POST">
+        <label for="title">{{ text_title }} : <input type="text" name="title" id="title" required></label><br>
+        <label for="news">{{ text_news }} : <br><textarea name="news" id="news" cols="30" rows="10" required></textarea></label><br>
+        <label for="author">{{ text_author }} : <input type="text" name="author" id="author" required></label><br>
+        <a href="{{ addNews }}" class="btn btn-primary">{{ text_submit }}</a>
     </form>
+
       {{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>

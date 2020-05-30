@@ -10,4 +10,4 @@ CREATE TABLE `ocy6_news` (
   PRIMARY KEY (`id_new`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
-INSERT INTO ocy6_news (title, news, author) VALUES ('Les jambons', 'le forest noir cest le meilleur!','Samus'), ('Mes Articles.', 'les articles sur la Nes', 'Samus');
+INSERT INTO ocy6_news (title, news, author) VALUES ('Les jambons', 'le forest noir cest le meilleur!','Samus'), ('Mes Articles', 'les articles sur la Nes', 'Samus');
