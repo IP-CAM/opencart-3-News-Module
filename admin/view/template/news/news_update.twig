@@ -19,7 +19,7 @@
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
      <!-- ligne 23 et 231  ne sont pas par default -->
-      <h1>{{ heading_title }}</h1>
+      <h1>{{ text_update }} {{ text_news }}</h1>
       <a style = "margin-bottom: 25px;" href="{{news_list}}" class = "btn btn-primary">{{ text_news_list }}</a>
     <form method="POST">
         <label for="title">{{ text_title }} : <input type="text" name="title" id="title" value="{{news.title}}" required></label><br>

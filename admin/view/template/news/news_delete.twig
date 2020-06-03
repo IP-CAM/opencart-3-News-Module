@@ -19,7 +19,7 @@
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
      <!-- ligne 23 et 231  ne sont pas par default -->
-      <h1>{{ heading_title }}</h1>
+      <h1>{{ text_delete }} {{ text_news }} </h1>
      <table class="mx-auto" style="width: 250px;"> 
      <th>Title</th>
      <th>Author</th>
@@ -31,9 +31,9 @@
 
     <form method="POST" style = "margin-top: 20px;">
       <fieldset>
-        <legend>Confirmer supression ?</legend>
-        <button name="confirmation" value="oui">oui</button>
-        <button name="confirmation" value="non">non</button>
+        <legend>{{ text_confirm }}</legend>
+        <button name="confirmation" value="oui">{{ text_yes }}</button>
+        <button name="confirmation" value="non">{{ text_no }}</button>
       </fieldset>
     </form>
       {{ content_bottom }}</div>
