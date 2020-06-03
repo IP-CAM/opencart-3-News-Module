@@ -28,7 +28,7 @@ class ControllerInformationNews extends Controller
             $data['all_news'][] = array(
                 'title' => $news['title'],
                 'author' => $news['author'],
-                'description' => $news['description'],
+                'news' => $news['news'],
                 'view' => $this->url->link('information/news/news', 'id_new=' . $news['id_new'])
             );
         }
@@ -84,8 +84,11 @@ class ControllerInformationNews extends Controller
 
         $this->document->setTitle($news['title']);
 
+        $data['text_author'] = $this->language->get('text_author');
+
         $data['heading_title'] = $news['title'];
         $data['title'] = $news['title'];
+        $data['author'] = $news['author'];
         $data['description'] = $news['news'];
         $data['date'] = $news['date_added'];
 
