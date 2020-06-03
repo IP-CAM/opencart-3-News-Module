@@ -39,6 +39,7 @@ class ControllerNewsNews extends Controller
 
         $this->document->setTitle($this->language->get('heading_title'));
 
+        $data['text_link'] = $this->language->get('text_link');
         $data['heading_title'] = $this->language->get('heading_title');
         $data['title'] = $this->language->get('text_title');
         $data['text_news'] = $this->language->get('text_news');
