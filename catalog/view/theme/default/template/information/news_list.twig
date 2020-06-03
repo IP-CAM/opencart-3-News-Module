@@ -20,19 +20,24 @@
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
      <!-- ligne 23 et 231  ne sont pas par default -->
-      <h1>{{ heading_title }}</h1>
-
+     <h1>{{ heading_title }}</h1>
+    
      <table class="mx-auto" style="width: 250px;"> 
-     <th>Title</th>
-     <th>Author</th>
-     <th>Link</th>
+     <th style="padding-right: 65px;">Title</th>
+     <th style="padding-right: 65px; padding-left: 5px">Author</th>
+     <th style="padding-right: 50px; padding-left: 5px">Link</th>
      {% for news in all_news %}
-     <tr>
+     <tr style="height: 10px"></tr>
+     <tr style="transform: translate(0,5px);">
         <td> {{news.title}} </td>
         <td> {{news.author}} </td>
         <td><a href="{{news.view}}" class = "btn btn-primary">{{ text_view }}</a></td>
      </tr>
+     <tr style="height: 10px"></tr>
      {% endfor %}
+     
+     </table>
+     
      
      </table>
       {{ content_bottom }}</div>
